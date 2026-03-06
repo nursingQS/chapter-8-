@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 8: Older Adult Patient – NCLEX Review</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(145deg, #c9c2b0, #b0a48c);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background: #f5f0e5;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            background: linear-gradient(145deg, #5f6d7c, #3f4d5e);
+            color: white;
+            padding: 20px 30px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #25323f;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .header h1 {
+            font-size: 1.7rem;
+            margin: 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+        
+        .counter {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 100px;
+            text-align: center;
+            white-space: nowrap;
+            margin-left: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #d9d2c2;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #7f8f9f, #3f4d5e);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px;
+            background: #ece6db;
+        }
+        
+        .question-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 3px solid #bcb09b;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .question-header {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .question-number {
+            background: linear-gradient(145deg, #5f6d7c, #3f4d5e);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(63,77,94,0.4);
+        }
+        
+        .question-text {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #2e3b47;
+            flex-grow: 1;
+            font-weight: 600;
+            padding-right: 15px;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .option {
+            padding: 20px;
+            border: 3px solid #cfc0e3;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.15rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-color: #bcb09b;
+        }
+        
+        .option:hover {
+            background: #f0e9dd;
+            border-color: #8f8a7a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(95,109,124,0.15);
+        }
+        
+        .option-letter {
+            background: linear-gradient(145deg, #5f6d7c, #3f4d5e);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 3px solid #25323f;
+        }
+        
+        .option.correct {
+            background: linear-gradient(145deg, #66bb6a, #43a047);
+            border-color: #2e7d32;
+            color: white;
+        }
+        
+        .option.correct .option-letter {
+            background: #2e7d32;
+            color: white;
+            border-color: #1b5e20;
+        }
+        
+        .option.incorrect {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            border-color: #b71c1c;
+            color: white;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #b71c1c;
+            color: white;
+            border-color: #8b0000;
+        }
+        
+        .feedback-area {
+            flex-shrink: 0;
+        }
+        
+        .feedback {
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+            align-items: center;
+            gap: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            animation: slideIn 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .feedback.correct {
+            background: linear-gradient(145deg, #c8e6c9, #a5d6a7);
+            border: 3px solid #2e7d32;
+            color: #1b5e20;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background: linear-gradient(145deg, #ffcdd2, #ef9a9a);
+            border: 3px solid #b71c1c;
+            color: #710000;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .rationale {
+            background: linear-gradient(145deg, #f0ede5, #e3d9cc);
+            border: 3px solid #7b8a9a;
+            border-radius: 15px;
+            padding: 25px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .rationale.show {
+            display: block;
+        }
+        
+        .rationale h4 {
+            color: #3f4d5e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .rationale p {
+            color: #2e3b47;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: #cfc0e3;
+            border-top: 3px solid #bba8d7;
+            flex-shrink: 0;
+            height: 80px;
+            background: #d1c8b9;
+            border-top: 3px solid #bcb09b;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(145deg, #5f6d7c, #3f4d5e);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(63,77,94,0.4);
+            background: linear-gradient(145deg, #3f4d5e, #25323f);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(145deg, #9f9a8c, #7f7a6b);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(127,122,107,0.4);
+            background: linear-gradient(145deg, #7f7a6b, #635f52);
+        }
+        
+        .btn-cancel {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            color: white;
+            display: none;
+        }
+        
+        .btn-cancel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(229,57,53,0.4);
+            background: linear-gradient(145deg, #e53935, #c62828);
+        }
+        
+        .btn-cancel.show {
+            display: flex;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                height: 75px;
+                padding: 15px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+                font-size: 1.05rem;
+                gap: 15px;
+            }
+            
+            .option-letter {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .navigation {
+                padding: 15px 20px;
+                height: 70px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                gap: 10px;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .header {
+                height: 70px;
+                padding: 15px 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="header-content">
+            <h1>👵 Chapter 8: Management of the Older Adult Patient</h1>
+            <div class="subtitle">31 NCLEX-style questions · aging, independence, common conditions</div>
+        </div>
+        <div class="counter" id="counter">1/31</div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="main-content">
+        <div class="question-area">
+            <div class="question-header">
+                <div class="question-number" id="questionNumber">1</div>
+                <div class="question-text" id="question"></div>
+            </div>
+            
+            <div class="options-container" id="options"></div>
+        </div>
+        
+        <div class="feedback-area">
+            <div class="feedback" id="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div id="feedbackText"></div>
+            </div>
+            <div class="rationale" id="rationale">
+                <h4>📘 RATIONALE:</h4>
+                <p id="rationaleText"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="btn btn-secondary" id="prevBtn" onclick="previousCard()">
+            ⬅️ Previous
+        </button>
+        <div class="nav-buttons">
+            <button class="btn btn-cancel" id="cancelBtn" onclick="cancelSelection()">
+                ❌ Cancel
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextCard()">
+                Next ➡️
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Chapter 8: Management of the Older Adult Patient – exact 31 questions from document
+    const questions = [
+        {
+            id: 1,
+            question: "1. The nurse is providing care for an 82-year-old client whose signs and symptoms of Parkinson disease have worsened over the past several months. The client reports no longer being able to do as many things as in the past. Based on this statement, what issue is of most concern to the client?",
+            options: [
+                "A. Neurologic deficits",
+                "B. Loss of independence",
+                "C. Age-related changes",
+                "D. Tremors and decreased mobility"
+            ],
+            correct: 1, // B
+            rationale: "The client's statement focuses on the inability to perform previous activities, indicating concern about loss of independence, rather than specific symptoms of Parkinson disease. While neurologic deficits contribute to this limitation, the client's priority is maintaining independence."
+        },
+        {
+            id: 2,
+            question: "2. Which age-related physiologic change contributes to heart disease being the leading cause of death in older adults?",
+            options: [
+                "A. Heart muscle and arteries lose their elasticity.",
+                "B. Systolic blood pressure decreases.",
+                "C. Resting heart rate decreases with age.",
+                "D. Atrial-septal defects develop with age."
+            ],
+            correct: 0, // A
+            rationale: "Cardiovascular disease is the leading cause of death among adults older than 65 years. With aging, the heart muscle and arterial walls lose elasticity, which reduces stroke volume and contributes to cardiovascular disease. Systolic blood pressure usually increases, not decreases, and atrial-septal defects are not associated with aging."
+        },
+        {
+            id: 3,
+            question: "3. An occupational health nurse overhears an employee talking to a manager about a 65-year-old coworker. Which phenomenon should the nurse identify when hearing the employee state, 'You should just retire and make way for some new blood'?",
+            options: [
+                "A. Intolerance",
+                "B. Ageism",
+                "C. Dependence",
+                "D. Nonspecific prejudice"
+            ],
+            correct: 1, // B
+            rationale: "Ageism refers to prejudice or discrimination against individuals based on their age. The statement implies the older worker should retire simply due to age, demonstrating age-based discrimination."
+        },
+        {
+            id: 4,
+            question: "4. An 80-year-old client is being admitted for dehydration and syncope. The client is hypotensive, and intravenous fluids are ordered. What teaching strategy should the nurse review with this client?",
+            options: [
+                "A. Rise slowly and pause between lying, sitting, and standing.",
+                "B. Eat three large meals daily, with the largest at breakfast.",
+                "C. Use a rolling walker and call for assistance with every position change.",
+                "D. Keep the room very warm and bathe in hot water."
+            ],
+            correct: 0, // A
+            rationale: "Clients with hypotension should change positions slowly to prevent dizziness or syncope. Smaller, more frequent meals are preferred instead of large meals, and extreme heat (such as hot showers) should be avoided because it may worsen hypotension."
+        },
+        {
+            id: 5,
+            question: "5. A 76-year-old client presents to the emergency department with nausea, dyspnea, and shoulder pain. The spouse reports the client woke up confused, slightly unsteady, and pale. Which condition is most likely occurring?",
+            options: [
+                "A. Myocardial ischemia",
+                "B. Urinary tract infection (UTI)",
+                "C. Lung cancer",
+                "D. Chronic obstructive pulmonary disease (COPD)"
+            ],
+            correct: 0, // A
+            rationale: "Older adults often present with atypical symptoms of myocardial ischemia, including nausea, dyspnea, confusion, syncope, or pain in areas other than the chest (such as the shoulder). UTIs may cause confusion but usually include urinary symptoms."
+        },
+        {
+            id: 6,
+            question: "6. A 65-year-old client comes to the clinic for a yearly physical. The client reports enjoying good health but has had occasional constipation over the past 6 months. What intervention should the nurse suggest first?",
+            options: [
+                "A. Reduce the amount of stress the client experiences",
+                "B. Increase carbohydrate intake and reduce protein intake",
+                "C. Take herbal laxatives such as senna nightly",
+                "D. Increase daily intake of water"
+            ],
+            correct: 3, // D
+            rationale: "Constipation is common in older adults. Increasing fluid intake is one of the first and most effective interventions. Lifestyle modifications should be attempted before using laxatives. Stress reduction and dietary changes focusing only on carbohydrates and protein are not primary treatments."
+        },
+        {
+            id: 7,
+            question: "7. An 80-year-old client with hypertension now requires oxygen therapy in the hospital. The client asks why oxygen is necessary since they have never smoked and feel fine. Which age-related respiratory change explains this need?",
+            options: [
+                "A. Oxygen encourages coughing and deep breathing",
+                "B. Diminished respiratory efficiency and declining aerobic capacity",
+                "C. Oxygen increases inspiratory and expiratory lung force",
+                "D. Lung mass increases and residual volume decreases"
+            ],
+            correct: 1, // B
+            rationale: "With aging, the respiratory system becomes less efficient. There is reduced aerobic capacity and diminished respiratory efficiency, making it harder to compensate during illness. Lung mass actually decreases and residual volume increases with age."
+        },
+        {
+            id: 8,
+            question: "8. The nurse is educating a client with early-stage Alzheimer disease and family members. The client has been prescribed donepezil hydrochloride. What should the nurse explain about this medication?",
+            options: [
+                "A. It slows the progression of Alzheimer disease",
+                "B. It cures Alzheimer disease in some clients",
+                "C. It removes the client's awareness of having Alzheimer disease",
+                "D. It eliminates the physical effects of Alzheimer disease"
+            ],
+            correct: 0, // A
+            rationale: "There is no cure for Alzheimer disease. Medications such as donepezil help slow the progression and may improve some cognitive symptoms but do not eliminate or cure the disease."
+        },
+        {
+            id: 9,
+            question: "9. An 81-year-old client reports becoming increasingly frail and unsteady when standing and has fallen three times in the past month without injury. Which injury is this client most at risk for?",
+            options: [
+                "A. Hip fracture",
+                "B. Femoral fracture",
+                "C. Pelvic dysplasia",
+                "D. Tearing of a meniscus or bursa"
+            ],
+            correct: 0, // A
+            rationale: "The most common fracture associated with falls in older adults is a hip fracture, often related to osteoporosis and balance issues."
+        },
+        {
+            id: 10,
+            question: "10. A case manager is developing a care plan for an 84-year-old client admitted to a rehabilitation facility. Which factors enhance coping in older adults? (Select all that apply.)",
+            options: [
+                "A. Decreased risk taking",
+                "B. Effective adaptation skills",
+                "C. Avoiding participation in untested roles",
+                "D. Increased life experience",
+                "E. Resilience during change"
+            ],
+            correct: [1,3,4], // B, D, E
+            rationale: "Older adults often develop strong coping abilities, resilience, and life experience, which help them adapt to stress and change. Avoiding new roles or risk-taking does not enhance coping."
+        },
+        {
+            id: 11,
+            question: "11. A nurse is administering intramuscular influenza vaccines to older adults. Which age-related change should the nurse consider?",
+            options: [
+                "A. Less subcutaneous tissue and less muscle mass",
+                "B. More subcutaneous tissue and fragile skin",
+                "C. More superficial nerve distribution",
+                "D. Higher bleeding risk after IM injections"
+            ],
+            correct: 0, // A
+            rationale: "Older adults typically experience loss of muscle mass and decreased subcutaneous fat, which affects injection technique and site selection."
+        },
+        {
+            id: 12,
+            question: "12. A 78-year-old client refuses to complete an advance directive because they think it will allow others to control their finances. What information should the nurse provide?",
+            options: [
+                "A. Advance directives are not legal documents",
+                "B. Advance directives only address health care decisions",
+                "C. Finances cannot be managed without an advance directive",
+                "D. Advance directives allow the state to control finances"
+            ],
+            correct: 1, // B
+            rationale: "Advance directives provide instructions regarding health care decisions, such as a living will or durable power of attorney for health care. They do not address financial matters."
+        },
+        {
+            id: 13,
+            question: "13. A nurse is planning discharge education for an 81-year-old client with mild short-term memory loss. What strategy should the nurse use?",
+            options: [
+                "A. Set long-term goals",
+                "B. Provide a list of helpful websites",
+                "C. Minimize visual cues",
+                "D. Keep teaching sessions short"
+            ],
+            correct: 3, // D
+            rationale: "Older adults with memory difficulties benefit from short, focused teaching sessions, repetition, and the use of visual or auditory cues."
+        },
+        {
+            id: 14,
+            question: "14. The nurse is teaching staff about normal physiologic changes of aging. Which change is considered normal?",
+            options: [
+                "A. Decreased cognition, judgment, and memory",
+                "B. Decreased muscle mass and bone density",
+                "C. Loss of sexual desire in men and women",
+                "D. Increased sweat and sebaceous gland activity"
+            ],
+            correct: 1, // B
+            rationale: "Normal aging includes loss of muscle mass and decreased bone density. Sexual desire does not disappear completely, and sweat gland activity actually decreases."
+        },
+        {
+            id: 15,
+            question: "15. During a home visit, a nurse notices that a 90-year-old client with cardiovascular disease has suddenly developed confusion and agitation. What should the nurse do first?",
+            options: [
+                "A. Increase home care visits",
+                "B. Ask a family member to check on the client",
+                "C. Arrange a visit with the primary care provider",
+                "D. Refer the client to an adult day program"
+            ],
+            correct: 2, // C
+            rationale: "Sudden confusion in older adults may indicate vascular dementia or other acute medical issues and requires prompt medical evaluation."
+        },
+        {
+            id: 16,
+            question: "16. A home health nurse visits a 71-year-old widowed client who reports using herbal remedies. What information should the nurse include in the teaching?",
+            options: [
+                "A. Herbal remedies are consistent with holistic health care",
+                "B. Herbal remedies are often cheaper than prescribed medication",
+                "C. It is safest to avoid herbal remedies entirely",
+                "D. Inform the primary care provider and pharmacist about the herbal remedies"
+            ],
+            correct: 3, // D
+            rationale: "Herbal remedies can interact with prescribed medications and cause toxic effects. Clients should always inform their health care provider and pharmacist about any herbal products they are using."
+        },
+        {
+            id: 17,
+            question: "17. A 54-year-old postmenopausal woman reports painful intercourse. What reproductive system change contributes to this problem?",
+            options: [
+                "A. Thickening of the vaginal wall",
+                "B. Increased vaginal secretions",
+                "C. Shortening of the vagina",
+                "D. Increased pubococcygeal muscle tone"
+            ],
+            correct: 2, // C
+            rationale: "Menopause decreases estrogen and progesterone levels. This causes thinning of the vaginal wall, decreased lubrication, reduced muscle tone, and shortening of the vagina, which can result in painful intercourse."
+        },
+        {
+            id: 18,
+            question: "18. A 62-year-old woman has experienced urinary incontinence for 6 months and avoids drinking fluids after 5 pm. She believes this is a normal part of aging. What advice should the nurse give?",
+            options: [
+                "A. Urinary incontinence is normal with aging",
+                "B. You likely have a urinary tract infection",
+                "C. Use pads instead of disposable underwear",
+                "D. Urinary incontinence is not a normal part of aging and should be evaluated"
+            ],
+            correct: 3, // D
+            rationale: "Urinary incontinence is not a normal consequence of aging. The client should be evaluated by a health care provider. Adequate fluid intake also helps prevent bladder infections."
+        },
+        {
+            id: 19,
+            question: "19. A 59-year-old client is undergoing routine screening. What is one of the earliest physical signs of aging?",
+            options: [
+                "A. Frequent aches and pains",
+                "B. Failing eyesight, especially close vision",
+                "C. Loss of muscle tone",
+                "D. Accepting limitations and developing assets"
+            ],
+            correct: 1, // B
+            rationale: "Presbyopia (difficulty seeing close objects) is one of the earliest physical signs of aging and commonly appears during middle adulthood."
+        },
+        {
+            id: 20,
+            question: "20. A gerontologic nurse considers demographic trends affecting health care. Which change has the greatest impact?",
+            options: [
+                "A. Families caring for aging members",
+                "B. Adult children managing chronic diseases of parents",
+                "C. More people living to a very old age",
+                "D. Increased accidents among older adults"
+            ],
+            correct: 2, // C
+            rationale: "The rapid increase in the number of individuals living to advanced ages significantly affects health care systems and resource planning."
+        },
+        {
+            id: 21,
+            question: "21. A 76-year-old client with Parkinson disease has aspiration pneumonia and constipation. Which nursing intervention helps both conditions?",
+            options: [
+                "A. Sitting upright during meals",
+                "B. Maintaining oral hygiene",
+                "C. Long-term laxative use",
+                "D. Increasing dietary fat"
+            ],
+            correct: 0, // A
+            rationale: "Sitting upright during meals helps prevent aspiration and also improves gastrointestinal motility, which can reduce constipation."
+        },
+        {
+            id: 22,
+            question: "22. Most adults aged 75 years and older remain functionally independent. What factor contributes most to this trend?",
+            options: [
+                "A. Early disease detection and advocacy",
+                "B. Health promotion and disease prevention activities",
+                "C. Improved hypertension treatment",
+                "D. Genetic changes increasing resilience"
+            ],
+            correct: 1, // B
+            rationale: "Improved nutrition, exercise, reduced smoking, and early detection of disease have helped maintain independence in older adults."
+        },
+        {
+            id: 23,
+            question: "23. A 77-year-old client with vascular dementia is receiving home care. Which intervention helps prevent future infarcts?",
+            options: [
+                "A. Limiting activity",
+                "B. Adequate nutrition and fluids",
+                "C. Controlling blood pressure and cholesterol levels",
+                "D. Using mobility aids"
+            ],
+            correct: 2, // C
+            rationale: "Vascular dementia is strongly associated with hypertension and cardiovascular disease. Controlling these risk factors reduces the risk of future infarcts."
+        },
+        {
+            id: 24,
+            question: "24. Public health officials want to address diseases with the fastest increase in death rates among older adults. Which condition should they target?",
+            options: [
+                "A. Stroke",
+                "B. Cancer",
+                "C. Respiratory infections",
+                "D. Alzheimer disease"
+            ],
+            correct: 3, // D
+            rationale: "Deaths from Alzheimer disease have increased significantly and are projected to continue rising as the population ages."
+        },
+        {
+            id: 25,
+            question: "25. A 72-year-old client takes nine medications and reports dizziness after knee replacement surgery. Which nursing diagnosis is most appropriate?",
+            options: [
+                "A. Risk for infection",
+                "B. Risk for falls related to polypharmacy",
+                "C. Adult failure to thrive",
+                "D. Disturbed thought processes"
+            ],
+            correct: 1, // B
+            rationale: "Polypharmacy and dizziness significantly increase the risk of falls in older adults."
+        },
+        {
+            id: 26,
+            question: "26. A 55-year-old client plans to retire in five years. Which example represents a healthy social change for retirement?",
+            options: [
+                "A. Spending leisure time mainly with spouse and family",
+                "B. Developing routines and friendships outside work",
+                "C. Planning multiple vacations",
+                "D. Starting an online social network with coworkers"
+            ],
+            correct: 1, // B
+            rationale: "Successful retirement involves building social networks and activities outside of employment."
+        },
+        {
+            id: 27,
+            question: "27. A 77-year-old client worries about becoming a burden to children and having financial difficulties. What nursing diagnosis is most likely?",
+            options: [
+                "A. Disturbed thought processes",
+                "B. Impaired social interaction",
+                "C. Decisional conflict",
+                "D. Anxiety"
+            ],
+            correct: 3, // D
+            rationale: "Concerns about financial stability and dependence on family commonly cause anxiety in older adults."
+        },
+        {
+            id: 28,
+            question: "28. The interaction between disability and aging varies based on which factor?",
+            options: [
+                "A. Socioeconomic status",
+                "B. Ethnicity",
+                "C. Education",
+                "D. Pharmacotherapy"
+            ],
+            correct: 0, // A
+            rationale: "The impact of disability and aging may vary based on socioeconomic factors and gender, among other variables."
+        },
+        {
+            id: 29,
+            question: "29. What is a major goal of gerontologic nursing?",
+            options: [
+                "A. Reduce use of external resources",
+                "B. Help older adults use strengths to maintain independence",
+                "C. Promote social integration",
+                "D. Identify weaknesses limiting functioning"
+            ],
+            correct: 1, // B
+            rationale: "Gerontologic nursing focuses on maintaining functional ability and promoting independence."
+        },
+        {
+            id: 30,
+            question: "30. What outcome has been associated with gerontologic advanced practice nurses in long-term care facilities?",
+            options: [
+                "A. Greater interaction between generations",
+                "B. Faster recovery from illness",
+                "C. Less deterioration in overall health",
+                "D. Increased happiness compared with home living"
+            ],
+            correct: 2, // C
+            rationale: "Advanced practice nurses trained in geriatric care apply evidence-based practices, resulting in improved overall health outcomes and less decline."
+        },
+        {
+            id: 31,
+            question: "31. A nurse applies Miller's Functional Consequences Theory in a long-term care facility. What is the primary focus?",
+            options: [
+                "A. Controlling age-related changes",
+                "B. Lowering expectations for recovery",
+                "C. Accepting inevitability of death",
+                "D. Distinguishing age-related changes from modifiable risk factors"
+            ],
+            correct: 3, // D
+            rationale: "Miller's Functional Consequences Theory emphasizes recognizing normal aging changes while identifying modifiable risk factors that nurses can address to improve function and quality of life."
+        }
+    ];
+
+    let currentQuestion = 0;
+    let selectedOption = null;
+    let answers = Array(questions.length).fill(null);
+
+    function loadQuestion() {
+        const q = questions[currentQuestion];
+        if (!q) return;
+
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        document.getElementById('progressBar').style.width = `${progress}%`;
+        document.getElementById('counter').textContent = `${currentQuestion + 1}/${questions.length}`;
+        document.getElementById('questionNumber').textContent = q.id;
+
+        document.getElementById('question').innerHTML = q.question;
+        loadOptions(q);
+
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+
+        document.getElementById('prevBtn').disabled = currentQuestion === 0;
+        const stored = answers[q.id - 1];
+        document.getElementById('nextBtn').disabled = stored === null || stored === undefined;
+        document.getElementById('nextBtn').textContent = currentQuestion >= questions.length - 1 ? 'Finish ➡️' : 'Next ➡️';
+    }
+
+    function loadOptions(q) {
+        const container = document.getElementById('options');
+        container.innerHTML = '';
+        q.options.forEach((opt, idx) => {
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.innerHTML = `<div class="option-letter">${String.fromCharCode(65 + idx)}</div><div>${opt}</div>`;
+            div.onclick = () => selectOption(idx);
+            container.appendChild(div);
+        });
+
+        const saved = answers[q.id - 1];
+        if (saved !== null && saved !== undefined) {
+            selectOption(saved, true);
+        }
+    }
+
+    function selectOption(index, fromMemory = false) {
+        const q = questions[currentQuestion];
+        if (!fromMemory && selectedOption !== null) return;
+
+        if (!fromMemory) {
+            selectedOption = index;
+            answers[q.id - 1] = index;
+        }
+
+        highlightSelected(index, q);
+        showFeedback(index, q);
+        document.getElementById('nextBtn').disabled = false;
+        document.getElementById('cancelBtn').classList.add('show');
+    }
+
+    function highlightSelected(index, q) {
+        const opts = document.querySelectorAll('.option');
+        opts.forEach((opt, i) => opt.classList.remove('correct', 'incorrect'));
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        if (Array.isArray(q.correct)) {
+            correctIndices.forEach(ci => opts[ci]?.classList.add('correct'));
+            if (!correctIndices.includes(index)) {
+                opts[index]?.classList.add('incorrect');
+            }
+        } else {
+            if (index === q.correct) {
+                opts[index].classList.add('correct');
+            } else {
+                opts[index].classList.add('incorrect');
+                opts[q.correct].classList.add('correct');
+            }
+        }
+    }
+
+    function showFeedback(index, q) {
+        const fb = document.getElementById('feedback');
+        const icon = document.getElementById('feedbackIcon');
+        const text = document.getElementById('feedbackText');
+        const rationaleDiv = document.getElementById('rationale');
+        const rationaleP = document.getElementById('rationaleText');
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const isCorrect = correctIndices.includes(index);
+
+        if (isCorrect) {
+            fb.className = 'feedback correct';
+            icon.textContent = '✅';
+            text.textContent = 'CORRECT! Well done.';
+        } else {
+            fb.className = 'feedback incorrect';
+            icon.textContent = '❌';
+            const letters = correctIndices.map(c => String.fromCharCode(65 + c)).join(', ');
+            text.textContent = `INCORRECT. The correct answer(s): ${letters}`;
+        }
+
+        fb.style.display = 'flex';
+        rationaleP.innerHTML = q.rationale;
+        rationaleDiv.classList.add('show');
+    }
+
+    function cancelSelection() {
+        const q = questions[currentQuestion];
+        selectedOption = null;
+        answers[q.id - 1] = null;
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('correct', 'incorrect'));
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+        document.getElementById('nextBtn').disabled = true;
+    }
+
+    function nextCard() {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            selectedOption = null;
+            loadQuestion();
+        } else {
+            currentQuestion = 0;
+            loadQuestion();
+        }
+    }
+
+    function previousCard() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            const q = questions[currentQuestion];
+            selectedOption = answers[q.id - 1];
+            loadQuestion();
+        }
+    }
+
+    // keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.key >= '1' && e.key <= '4') selectOption(parseInt(e.key)-1);
+        else if (e.key >= 'a' && e.key <= 'd') selectOption(e.key.charCodeAt(0)-97);
+        else if (e.key >= 'A' && e.key <= 'D') selectOption(e.key.charCodeAt(0)-65);
+        else if (e.key === 'ArrowLeft' && !document.getElementById('prevBtn').disabled) previousCard();
+        else if (e.key === 'ArrowRight' && !document.getElementById('nextBtn').disabled) nextCard();
+        else if (e.key === 'Escape' && document.getElementById('cancelBtn').classList.contains('show')) cancelSelection();
+    });
+
+    loadQuestion();
+</script>
+</body>
+</html>
